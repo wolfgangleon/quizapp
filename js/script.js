@@ -13,6 +13,12 @@ $(document).ready( function() {
 		$('header h1').html($('.quotes').html());
 	});
 
+	/* --- Selecting answer ----*/
+
+	$('.answer').on('click', function(){
+		$(this).toggleClass('clicked').addClass('selected');
+	});
+
 
 
 });  // End of Document Script
