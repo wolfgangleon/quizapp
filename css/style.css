@@ -48,6 +48,7 @@ body {
 	color:#393B35;
 	background: url('../img/background-1.jpg');
 	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 /* Color Palet 
@@ -101,6 +102,7 @@ ________________________________________________________________________________
 
 header {
 	padding: 1em;
+	box-shadow: 0px 1px 6px;
 }
 
 .logo {
