@@ -156,9 +156,9 @@ ________________________________________________________________________________
 }
 
 .answer {
-	margin: 1em 15em 1em 2em;
+	margin: 1em 1em 1em 2em;
 	text-transform: capitalize;
-	font-size: 1.2em;
+	font-size: 1.4em;
 	border-radius: 10px;
 	padding-left: 0.5em;
 }
@@ -201,10 +201,28 @@ ________________________________________________________________________________
 	font-size: 3.5em !important; 
 }
 
+/*_____________________________________________________________________________________________________________________________________
+
+
+															RESULTS
+______________________________________________________________________________________________________________________________________*/
+
 #result {
 	display: none;
-	height: 25em;
+	height: 39em;
 	margin-top: 17.85em;
 	box-shadow: 0px 0px 15px;
-	background-color: rgba(56,128,173,0.1);
+	background-color: rgba(19, 52, 83, 0.4);
+}
+
+#result h2 {
+	position: absolute;
+	font-size: 5em;	
+	margin:0.5em 0.5em;
+}
+
+#result p {
+	position: absolute;
+	font-size: 4em;	
+	margin:2em 1.5em;
 }

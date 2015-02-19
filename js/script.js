@@ -2,6 +2,7 @@ $(document).ready( function() {
 
 	/* --- Variables ----*/
 	var onCount = 0
+
 	/* ---- Front Page hiding --- */ 
 
 	$('#front-page').click( function() {
@@ -18,16 +19,21 @@ $(document).ready( function() {
 		$(this).toggleClass('clicked').addClass('selected');
 	});
 
+	/*--- Submitting options ---*/
+
 	$('.submit').on('click', function() {
 		
 		onCount++;
 
 		if (onCount >= 5) {
-
+				//will change the button content
 			$(this).html('Jibe Oh');
 
 			if (onCount == 6 ) {
+
+				//it'll display the results
 				$('#result').fadeIn('slow');
+				$('#list-result .selected').html( $('#list .selected').html() );
 			};
 
 		};
