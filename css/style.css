@@ -198,5 +198,5 @@ ________________________________________________________________________________
 .fa-angle-right {
 	color:#FFFFFF;
 	margin: -0.15em -0.15em 0 0;
-	font-size: 3.5em;
+	font-size: 3.5em !important; 
 }
