@@ -1,8 +1,7 @@
 $(document).ready( function() {
 
 	/* --- Variables ----*/
-	
-
+	var onCount = 0
 	/* ---- Front Page hiding --- */ 
 
 	$('#front-page').click( function() {
@@ -15,9 +14,25 @@ $(document).ready( function() {
 
 	/* --- Selecting answer ----*/
 
-	$('.answer').on('click', function(){
+	$('#list .answer').on('click', function(){
 		$(this).toggleClass('clicked').addClass('selected');
 	});
+
+	$('.submit').on('click', function() {
+		
+		onCount++;
+
+		if (onCount >= 5) {
+
+			$(this).html('Jibe Oh');
+
+			if (onCount == 6 ) {
+				$('#result').fadeIn('slow');
+			};
+
+		};
+		
+	})
 
 
 

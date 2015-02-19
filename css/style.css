@@ -143,8 +143,8 @@ ________________________________________________________________________________
 	background-position: center;
 }
 
-#list {
-	margin:2em 0 0 30%;
+#list, #list-result {
+	margin:2em 25% 0 25%;
 	list-style-type: circle;
 	position: absolute;
 }
@@ -156,14 +156,14 @@ ________________________________________________________________________________
 }
 
 .answer {
-	margin: 1em 15em 0 2em;
+	margin: 1em 15em 1em 2em;
 	text-transform: capitalize;
 	font-size: 1.2em;
 	border-radius: 10px;
 	padding-left: 0.5em;
 }
 
-.answer:hover {
+#list .answer:hover {
 	cursor: pointer;
 }
 
@@ -199,4 +199,12 @@ ________________________________________________________________________________
 	color:#FFFFFF;
 	margin: -0.15em -0.15em 0 0;
 	font-size: 3.5em !important; 
+}
+
+#result {
+	display: none;
+	height: 25em;
+	margin-top: 17.85em;
+	box-shadow: 0px 0px 15px;
+	background-color: rgba(56,128,173,0.1);
 }
