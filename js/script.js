@@ -134,7 +134,7 @@ $(document).ready( function() {
 		}
 
 
-		if ( !A ) {								//checking typeof undefined
+		if ( !A ) {								//checking typeof <li> undefined
 
 			$('#list .A').remove();
 		} 
