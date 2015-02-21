@@ -49,6 +49,7 @@ body {
 	background: url('../img/background-1.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
+	min-width: 1200px;
 }
 
 /* Color Palet 

@@ -1,7 +1,6 @@
 $(document).ready( function() {
 
 	$('#list').css('margin','8em 37%');
-	$('#list .clicked').toggleClass('answer');
 
 	/* --- Variables ----*/
 	var onCount = 0,
