@@ -44,6 +44,7 @@ table {
 
 body {
 	height: 100%;
+	width: 100%;
 	font-family: 'josefin slab' serif; 
 	color:#393B35;
 	background: url('../img/background-1.jpg');
