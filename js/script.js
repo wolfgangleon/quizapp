@@ -31,9 +31,6 @@ $(document).ready( function() {
 							 'When the boat is head to wind, and the sails luffing and the boat is gaining no headway, this term is known as what?',
 							 'The left and right sides of the boat are referred to as what?',
 							 'What is the most efficient use of the sail when sailing downwind?');
-
-	console.log(Math.floor( Math.random()*questions.length ))
-	console.log(questions.length)
 	
 	var correctAnswer = new Array('Tacking',
 								   'True',
@@ -71,7 +68,7 @@ $(document).ready( function() {
 		$('#list').css('margin','2em 25%');
 
 		onCount++;
-		console.log(onCount)
+		console.log('onCount:' + onCount)
 
 		if (onCount >= 6) { //will change the button content
 			
@@ -150,31 +147,34 @@ $(document).ready( function() {
 		if ( !D ) {
 			$('#list .D').remove();
 		}
-
-
-
-		/* --- Selecting answer ----*/
-
-		ansNum++;
-
-		$('#list').on('click', '.answer', function(){
-			$(this).toggleClass('clicked');
-			$('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() )
-			console.log( $('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() ) )
-
-
-		/* --- Score counting --- */
-			console.log( $('.clicked').html().length )
-			console.log (D.length)
-
-			if ( $('.clicked').html().length == D.length ) {
-				scoreCount++;
-				$('#result p').html( scoreCount +'/5' );
-			};
 	
 	});
 
 	
+
+	/* --- Selecting answer ----*/
+
+
+	$('#list').on('click', '.answer', function(){
+
+		ansNum = numQ + 1;
+
+		$(this).toggleClass('clicked');
+
+		$('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() )
+
+		/* --- Score counting --- */
+
+		console.log('correctAnswerval:' + correctAnswer[numQ] )
+
+		if ( $('.clicked').html() == correctAnswer[numQ] ) {
+			scoreCount++;
+			$('#result p').html( scoreCount +'/5' );
+		} 
+
+		else if ( scoreCount == 0 ) {
+			$('#result p').html( '0/5' );
+		}
 
 	});
 	
