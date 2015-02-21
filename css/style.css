@@ -91,7 +91,7 @@ ________________________________________________________________________________
 #front-page #writer{
 	font-size: 0.7em;
 	font-style: normal;
-	padding-left: 5em;
+	text-align: center;
 }
 
 /* _________________________________________________________________________________________________________________________________________
@@ -185,7 +185,7 @@ ________________________________________________________________________________
 	height: 4.64em;
 	width: 4.64em;
 	margin:3.28em 0 0 40em;
-	background-color: rgba(229, 229, 229, 0.4);
+	background-color: rgba(229, 229, 229, 0.9);
 	text-align: center;
 	text-transform: capitalize;
 	font-family: 'josefin slab' serif; 
