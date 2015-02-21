@@ -154,22 +154,28 @@ $(document).ready( function() {
 
 
 
-	/* --- Selecting answer ----*/
+		/* --- Selecting answer ----*/
 
-	ansNum++;
+		ansNum++;
 
-	$('#list').on('click', '.answer', function(){
-		$(this).toggleClass('clicked');
-		$('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() )
-		console.log( $('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() ) )
+		$('#list').on('click', '.answer', function(){
+			$(this).toggleClass('clicked');
+			$('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() )
+			console.log( $('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() ) )
+
+
+		/* --- Score counting --- */
+			console.log( $('.clicked').html().length )
+			console.log (D.length)
+
+			if ( $('.clicked').html().length == D.length ) {
+				scoreCount++;
+				$('#result p').html( scoreCount +'/5' );
+			};
+	
 	});
 
-	/* --- Score counting --- */
 	
-		scoreCount++;
-		$('#result p').html( scoreCount+'/5' );
-	
-
 
 	});
 	
