@@ -28,6 +28,9 @@ $(document).ready( function() {
 							 'When the boat is head to wind, and the sails luffing and the boat is gaining no headway, this term is known as what?',
 							 'The left and right sides of the boat are referred to as what?',
 							 'What is the most efficient use of the sail when sailing downwind?');
+
+	console.log(Math.floor( Math.random()*questions.length ))
+	console.log(questions.length)
 	
 	var correctAnswer = new Array('Tacking',
 								   'True',
@@ -58,7 +61,7 @@ $(document).ready( function() {
 	});
 
 	
-	/* --- Question running in the application --- */
+	/* --- Quiz running in the application --- */
 
 	$('.submit').on('click', function() {
 
@@ -76,8 +79,6 @@ $(document).ready( function() {
 		if (onCount == 7 ) { //it'll display the results
 
 				$('#result').fadeIn('slow');
-				$('#list-result .selected').html( $('#list .selected').html() );
-				$('#list li').attr('readonly','readonly')
 
 				onCount=0;
 		};
@@ -96,14 +97,39 @@ $(document).ready( function() {
 		if (onCount < 6){
 			$('#list li').remove();
 		};	
-													// Display answers
-		var A = incorrectAnswer[numQ].q[0],
-			B = incorrectAnswer[numQ].q[1],
-			C = incorrectAnswer[numQ].q[2],
-			D = correctAnswer[numQ];
+													// Display answers Randomly
 
-		$('#list').append('<li class="answer A">'+ A + '</li>').append('<li class="answer B">' +  B + '</li>').append('<li class="answer C">'+  C + '</li>')
-				  .append('<li class="answer D">' + D + '</li>');
+
+												
+		var 	A=incorrectAnswer[numQ].q[0],
+				B=incorrectAnswer[numQ].q[1],
+				C=incorrectAnswer[numQ].q[2],
+				D=correctAnswer[numQ];  
+
+		var n = Math.floor( Math.random()*100);
+		console.log('n:' + n )
+
+		if (n < 25 ) {
+
+			$('#list').append('<li class="answer A">'+ A + '</li>').append('<li class="answer B">' +  B + '</li>').append('<li class="answer C">'+  C + '</li>')
+					  .append('<li class="answer D">' + D + '</li>');
+		}
+
+		else if (n <50 ) {
+			$('#list').append('<li class="answer D">'+ D + '</li>').append('<li class="answer C">' +  C + '</li>').append('<li class="answer A">'+  A + '</li>')
+					  .append('<li class="answer B">' + B + '</li>');
+		}
+
+		else if (n < 75 ) {
+			$('#list').append('<li class="answer C">'+ C + '</li>').append('<li class="answer A">' +  A + '</li>').append('<li class="answer D">'+  D + '</li>')
+					  .append('<li class="answer B">' + B + '</li>');
+		}
+
+		else {
+			$('#list').append('<li class="answer B">'+ B + '</li>').append('<li class="answer D">' +  D + '</li>').append('<li class="answer C">'+  C + '</li>')
+					  .append('<li class="answer A">' + A + '</li>');
+		}
+
 
 		if ( !A ) {								//checking typeof undefined
 
@@ -122,19 +148,20 @@ $(document).ready( function() {
 			$('#list .D').remove();
 		}
 
+			/* --- Selecting answer ----*/
 
-		/* --- Selecting answer ----*/
+		
 
 		$('#list .answer').on('click', function(){
-			$(this).toggleClass('clicked');
+		
+				$(this).toggleClass('clicked');
+			
 		});
 
 	});
+
 	
-	if ( correctAnswer.equals( $('.clicked').html() ) ) {
-		alert('correct');
-	}
 
-
+	
 
 });  // End of Document Script
