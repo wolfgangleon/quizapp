@@ -1,10 +1,14 @@
 $(document).ready( function() {
 
 	$('#list').css('margin','8em 37%');
+	$('#list .clicked').toggleClass('answer');
 
 	/* --- Variables ----*/
 	var onCount = 0,
-		numQ = -1;
+		numQ = -1,
+		ansNum=0,
+		scoreCount=0;
+
 
 	var randomQuotes = Math.floor( Math.random()*4 );
 		console.log('quote: ' + randomQuotes)
@@ -60,7 +64,7 @@ $(document).ready( function() {
 		$('header h1').html($('.quote').html() + ' - ' + $('#writer').html() );
 	});
 
-	
+
 	/* --- Quiz running in the application --- */
 
 	$('.submit').on('click', function() {
@@ -148,20 +152,26 @@ $(document).ready( function() {
 			$('#list .D').remove();
 		}
 
-			/* --- Selecting answer ----*/
 
-		
 
-		$('#list .answer').on('click', function(){
-		
-				$(this).toggleClass('clicked');
-			
-		});
+	/* --- Selecting answer ----*/
 
+	ansNum++;
+
+	$('#list').on('click', '.answer', function(){
+		$(this).toggleClass('clicked');
+		$('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() )
+		console.log( $('#list-result .answer-' + ansNum +' .selected').html( $('.clicked').html() ) )
 	});
 
+	/* --- Score counting --- */
+	
+		scoreCount++;
+		$('#result p').html( scoreCount+'/5' );
 	
 
+
+	});
 	
 
 });  // End of Document Script
