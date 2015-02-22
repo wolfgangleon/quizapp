@@ -172,11 +172,12 @@ $(document).ready( function() {
 			$('#result p').html( scoreCount +'/5' );
 		} 
 
-		else if ( scoreCount == 0 ) {
-			$('#result p').html( '0/5' );
-		}
-
 	});
+
+
+	if ( scoreCount == 0 ) {
+		$('#result p').html( '0/5' );
+	}
 	
 
 });  // End of Document Script
