@@ -56,10 +56,10 @@ $(document).ready( function() {
 		$(this).fadeOut('slow');
 		$('body').css('background','url("")');
 		$('#quiz-page').show();
+		$('header').show();
 		$('header').append('<h1 class="quote"></h1>')
 		$('header h1').html($('.quote').html() + ' - ' + $('#writer').html() );
 	});
-
 
 	/* --- Quiz running in the application --- */
 
