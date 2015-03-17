@@ -4,51 +4,73 @@ $(document).ready( function() {
 
 	/* --- Variables ----*/
 	var onCount = 0,
-		numQ = -1,
-		ansNum=0,
 		scoreCount=0;
 
 
-	var randomQuotes = Math.floor( Math.random()*4 );
-		console.log('quote: ' + randomQuotes)
+	var randomQuote = Math.floor( Math.random()*4 );
+		console.log('quote: ' + randomQuote)
 
 	/* --- Quotes --- */ 
 
-	var quotes = new Array ('"To reach a port we must set sail. Sail, not tie an anchor. Sail, not drift."',
-							'"If one does not know to which port one is sailing, no wind is favorable."',
-							'"Nothing comes sailing by itself."',
-							'"It is not the ship so much as the skillful sailing that assures the prosperous voyage."');
-
-	var writers = new Array ('Franklin D. Roosevelt',
-							 'Lucius Annaeus Seneca',
-							 'Alexander Dale Oen',
-							 'George William Curtis')
-
+	var quotes = [{
+		quote:'"To reach a port we must set sail. Sail, not tie an anchor. Sail, not drift."',
+		writer:'Franklin D. Roosevelt',
+		quoteNum:0
+		},
+		{
+		quote:'"If one does not know to which port one is sailing, no wind is favorable."',
+		writer:'Lucius Annaeus Seneca',
+		quoteNum:1
+		},
+		{
+		quote:'"Nothing comes sailing by itself."',
+		writer:'Alexander Dale Oen',
+		quoteNum:2
+		},
+		{
+		quote:'"It is not the ship so much as the skillful sailing that assures the prosperous voyage."',
+		writer:'George William Curtis',
+		quoteNum:3	
+		}];
+	
 	/* -- Questions --*/
 		
-	var	questions = new Array('Coming about upwind is know as?',
-							 'The closest a boat can normally sail is at 45 degrees angle into the wind?',
-							 'When the boat is head to wind, and the sails luffing and the boat is gaining no headway, this term is known as what?',
-							 'The left and right sides of the boat are referred to as what?',
-							 'What is the most efficient use of the sail when sailing downwind?');
-	
-	var correctAnswer = new Array('Tacking',
-								   'True',
-									'In Irons',
-									'Port and Starboard',
-									'Wing and Wing');
-
-	var incorrectAnswer = new Array({q:['jibing','Heeling','luffing']},
-									{q:['false']},
-									{q:['in draft','in luff','in shackles']},
-									{q:['leech and draft','windward and leeward','head and luff']},
-									{q:['close-hauled','jib-lowered','porpoising']});
+	var	questions = [{
+		question:'Coming about upwind is know as?',
+		options:['jibing','Heeling','Tacking','luffing'],
+		qNum:0,
+		correct:'Tacking'
+		},
+		{
+		question:'The closest a boat can normally sail is at 45 degrees angle into the wind?',
+		options:['True','False'],
+		qNum:1,
+		correct:'True'
+		},
+		{
+		question:'When the boat is head to wind, and the sails luffing and the boat is gaining no headway, this term is known as what?',
+		options:['in draft','In Irons','in luff','in shackles'],
+		qNum:2,
+		correct:'In Irons'
+		},
+		{
+		question:'The left and right sides of the boat are referred to as what?',
+		options:['leech and draft','windward and leeward','head and luff','Port and Starboard'],
+		qNum:3,
+		correct:'Port and Starboard'	
+		},
+		{
+		question:'What is the most efficient use of the sail when sailing downwind?',
+		options:['close-hauled','Wing and Wing','jib-lowered','porpoising'],
+		qNum:4,
+		correct:'Wing and Wing'	
+		}];
 
 
 	/* --- Quotes displaying -- */
 
-	$('.quote').html( quotes[ randomQuotes ] );
-	$('#writer').html( writers[ randomQuotes ] );
+	$('.quote').html( quotes[ randomQuote ].quote );
+	$('#writer').html( quotes[ randomQuote ].writer );
 
 	/* ---- Front Page hiding --- */ 
 
@@ -62,6 +84,8 @@ $(document).ready( function() {
 	});
 
 	/* --- Quiz running in the application --- */
+	
+	var numQ = -1;
 
 	$('.submit').on('click', function() {
 
@@ -80,73 +104,47 @@ $(document).ready( function() {
 
 				$('#result').fadeIn('slow');
 
-				onCount=0;
+				onCount = 0;
 		};
 
 		//Displaying Questions and anwsers
-
 		numQ++;
-		console.log('numQ:'+numQ)
 
-		if ( numQ>=6 ) {
+		if ( numQ >= 6 ) {
 				return null;
 		}
 
-		$('#list .question').html( questions[ numQ ] ); // Display question
+		$('#list .question').html( questions[ numQ ].question ); // Display question
 		
 		if (onCount < 6){
 			$('#list li').remove();
 		};	
-													// Display answers Randomly
 
-
+		// Display answers Randomly
 												
-		var 	A=incorrectAnswer[numQ].q[0],
-				B=incorrectAnswer[numQ].q[1],
-				C=incorrectAnswer[numQ].q[2],
-				D=correctAnswer[numQ];  
-
-		var n = Math.floor( Math.random()*100);
+		var n = Math.floor( Math.random()*4);
 		console.log('n:' + n )
 
-		if (n < 25 ) {
+		$('#list').append('<li class="answer" id="A">' + questions[ numQ ].options[0] + '</li>')
+				  .append('<li class="answer" id="B">' + questions[ numQ ].options[1] + '</li>')
+				  .append('<li class="answer" id="C">' + questions[ numQ ].options[2] + '</li>')
+				  .append('<li class="answer" id="D">' + questions[ numQ ].options[3] + '</li>');
 
-			$('#list').append('<li class="answer A">'+ A + '</li>').append('<li class="answer B">' +  B + '</li>').append('<li class="answer C">'+  C + '</li>')
-					  .append('<li class="answer D">' + D + '</li>');
-		}
-
-		else if (n <50 ) {
-			$('#list').append('<li class="answer D">'+ D + '</li>').append('<li class="answer C">' +  C + '</li>').append('<li class="answer A">'+  A + '</li>')
-					  .append('<li class="answer B">' + B + '</li>');
-		}
-
-		else if (n < 75 ) {
-			$('#list').append('<li class="answer C">'+ C + '</li>').append('<li class="answer A">' +  A + '</li>').append('<li class="answer D">'+  D + '</li>')
-					  .append('<li class="answer B">' + B + '</li>');
-		}
-
-		else {
-			$('#list').append('<li class="answer B">'+ B + '</li>').append('<li class="answer D">' +  D + '</li>').append('<li class="answer C">'+  C + '</li>')
-					  .append('<li class="answer A">' + A + '</li>');
-		}
-
-
-		if ( !A ) {								//checking typeof <li> undefined
-
-			$('#list .A').remove();
+		if ( !questions[ numQ ].options[0] ) {	//checking typeof <li> undefined
+			$('#list #A').remove();
 		} 
 
-		if ( !B ) {
-			$('#list .B').remove();
-		}
+		else if ( !questions[ numQ ].options[1] ) {	//checking typeof <li> undefined
+			$('#list #B').remove();
+		} 
 
-		if ( !C ) {
-			$('#list .C').remove();
-		}
+		else if ( !questions[ numQ ].options[2] ) {	//checking typeof <li> undefined
+			$('#list #C').remove();
+		} 
 
-		if ( !D ) {
-			$('#list .D').remove();
-		}
+		if ( !questions[ numQ ].options[3] ) {	//checking typeof <li> undefined
+			$('#list #D').remove();
+		}; 
 	
 	});
 
@@ -154,6 +152,7 @@ $(document).ready( function() {
 
 	/* --- Selecting answer ----*/
 
+	var ansNum = 0
 
 	$('#list').on('click', '.answer', function(){
 
@@ -165,9 +164,7 @@ $(document).ready( function() {
 
 		/* --- Score counting --- */
 
-		console.log('correctAnswerval:' + correctAnswer[numQ] )
-
-		if ( $('.clicked').html() == correctAnswer[numQ] ) {
+		if ( $('.clicked').html() == questions[ numQ ].correct ) {
 			scoreCount++;
 			$('#result p').html( scoreCount +'/5' );
 		} 
